@@ -3,6 +3,8 @@
     <h6> Email <%= user.email%></h5>
     <%= link_to gravatar_for(user, size: 200) , user %>
     <p> has <%= pluralize(user.articles.count,"article") %> </p>
+    <% if logged_in? and user==current_user%>
     <button><h6> <%= link_to "edit", edit_user_path(user) %> </h6></button>
     <button><h6> <%= link_to "DELETE", user ,method: :delete, data: { confirm: 'Are you sure?' }%> </h6></button>
+    <%end%>
 <% end %>

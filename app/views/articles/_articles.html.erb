@@ -3,6 +3,9 @@
     <h2> by shri shri shri <%= link_to article.user.username, user_path(article.user)%></h2>
     <h5> <%= article.description %></h5>
     <h6> <%= article.author %></h6>
-    <button><h6> <%= link_to "edit", edit_article_path(article) %> </h6></button>
-    <button><h6> <%= link_to "DELETE", article , method: :delete, data: { confirm: 'Are you sure?' }%> </h6></button>
+    <% if logged_in? and article.user == current_user%>
+    <h6> <%= link_to "edit", edit_article_path(article) %> </h6>
+    <h6> <%= link_to "DELETE", article , method: :delete, data: { confirm: 'Are you sure?' }%> </h6>
+    <% end %>
+    <hr>
 <% end %>

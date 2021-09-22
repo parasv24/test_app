@@ -1,8 +1,12 @@
 <div class = 'flickr_pagination'>
-<%= will_paginate @articles %>
+<h1>WELCOME TO THE ALPHA BLOG</h1>
 <%= render 'articles'%>
 <br>
 <br>
-<button><h1> <%= link_to "CREATE NEW BLOG", new_article_path , data: { confirm: 'Are you sure?' }%> </h1></button>
+<% if logged_in? %>
+<h1> <%= link_to "CREATE NEW BLOG", new_article_path , data: { confirm: 'Are you sure?' }%> </h1>
+<%else%>
+<h4> PLease <%= link_to "login" , login_path%> to create a article </h4>
+<% end %>
 <%= will_paginate @articles %>
 </div>

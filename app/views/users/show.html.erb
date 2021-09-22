@@ -1,4 +1,8 @@
-<h1> Welcome <%= @user.username %>
+<% if logged_in? and @user == current_user %>
+<h1> Welcome <%= @user.username %> </h1>
+<% else %>
+<h1> Viewing profile of  <%= @user.username %> </h1>
+<% end %>
 <%= gravatar_for @user, size: 200 %>
 <% if (@articles.length) >0 %>
     <h3> Here is a list of your articles </h3>
@@ -10,6 +14,14 @@
 <br>
 <br>
 <br>
+<% if logged_in? and @user== current_user%>
 <%= link_to 'EDIT YOUR PROFILE', edit_user_path(@user) %>
+<% end%>
 <br>
+<% if logged_in? %>
 <%= link_to 'LOG OUT', logout_path(@user) %>
+<% else %>
+<%= link_to 'LOG_IN' , login_path%>
+<br>
+<%= link_to 'Sign UP' , signup_path%>
+<% end%>
