@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
     end
     def create
         @article = Article.new(params.require(:article).permit(:title, :description, :author))
-        @article.user = User.last
+        @article.user = current_user
         respond_to do |format|
             @article.save
             format.html { redirect_to @article, notice: "Article was successfully created." }
