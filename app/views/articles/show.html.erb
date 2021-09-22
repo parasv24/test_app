@@ -1,3 +1,7 @@
+<h5>Author - </h5>
+    <%= link_to @article.user.username , user_path(@article.user) %>
+<br>
+<%= link_to gravatar_for(@article.user, size: 80) , user_path(@article.user) %>
 <h1> <%= @article.title %></h1>
 <h5> <%= @article.description %></h5>
 <h6> <%= @article.author %></h6>

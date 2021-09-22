@@ -1,2 +1,13 @@
-<h1> Hey i am the root of the application </h1>
-<h1> Root i am root </h1>
+<h1> Welcome to the Alpha BLOG </h1>
+<% if logged_in? %>
+<h3>WELCOME <%=current_user.username%></h3>
+<%= link_to current_user.username, user_path(current_user) %>
+<br>
+<%= link_to "LoGOUT", logout_path %>
+<% else %>
+<%= link_to "signup", signup_path %>
+<br>
+<%= link_to "LoGIN", login_path %>
+<%end%>
+<br>
+<%= link_to "Articles", articles_path %>

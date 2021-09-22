@@ -1,0 +1,15 @@
+<h1> Welcome <%= @user.username %>
+<%= gravatar_for @user, size: 200 %>
+<% if (@articles.length) >0 %>
+    <h3> Here is a list of your articles </h3>
+    <%= render 'articles/articles' %>
+<% else %>
+    <h3> You dont have any please create a article </h3>
+    <%= link_to 'create new article', new_article_path %>
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to 'EDIT YOUR PROFILE', edit_user_path(@user) %>
+<br>
+<%= link_to 'LOG OUT', logout_path(@user) %>

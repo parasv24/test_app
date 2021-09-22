@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
     def index
-        @articles = Article.all
+        @articles = Article.paginate(page: params[:page], per_page: 3)
     end
     def show
         @article = Article.find(params[:id])
@@ -24,6 +24,7 @@ class ArticlesController < ApplicationController
     end
     def create
         @article = Article.new(params.require(:article).permit(:title, :description, :author))
+        @article.user = User.last
         respond_to do |format|
             @article.save
             format.html { redirect_to @article, notice: "Article was successfully created." }

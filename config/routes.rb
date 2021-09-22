@@ -3,4 +3,9 @@ Rails.application.routes.draw do
   root "application#index"
   get "/about" , to: "application#about"
   resources :articles
+  get '/signup', to: "users#new"
+  resources :users, except: [:new]
+  get '/login', to: "sessions#new"
+  post '/login', to: "sessions#create"
+  get '/logout', to: "sessions#destroy"
 end
