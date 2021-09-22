@@ -15,9 +15,14 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end
     end
-    def require_same_user
+    def require_same_user_article
         if current_user != @article.user
             redirect_to articles_path
+        end
+    end
+    def require_same_user
+        if current_user != @user
+            redirect_to users_path
         end
     end
     def index

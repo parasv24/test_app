@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
     before_action :get_article, only: [:edit, :delete, :update, :show]
     before_action :require_user , except: [:show, :index]
-    before_action :require_same_user , only: [:edit, :delete, :update]
+    before_action :require_same_user_article , only: [:edit, :delete, :update]
     def index
         @articles = Article.paginate(page: params[:page], per_page: 3)
     end

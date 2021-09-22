@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :get_user, only: [:edit, :delete, :update, :show]
+    before_action :require_user , except: [:show, :index]
+    before_action :require_same_user , only: [:edit, :delete, :update]
     def new
         @user = User.new
     end
@@ -36,5 +39,8 @@ class UsersController < ApplicationController
             @user.destroy
             format.html { redirect_to users_url, notice: "Article was successfully updated." }
         end
+    end
+    def get_user
+        @user = User.find(params[:id])
     end
 end
