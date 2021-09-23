@@ -1,8 +1,5 @@
-<h1> Welcome to the Alpha BLOG </h1>
+<h1>WELCOME TO THE ALPHA BLOG <%= (link_to current_user.username, user_path(current_user)) if logged_in? %> </h1>
 <% if logged_in? %>
-<h3>WELCOME <%=current_user.username%></h3>
-<%= link_to current_user.username, user_path(current_user) %>
-<br>
 <%= link_to "LoGOUT", logout_path %>
 <% else %>
 <%= link_to "signup", signup_path %>

@@ -1,12 +1,14 @@
 <div class = 'flickr_pagination'>
-<h1>WELCOME TO THE ALPHA BLOG</h1>
+<h1>WELCOME TO THE ALPHA BLOG <%= (link_to current_user.username, user_path(current_user)) if logged_in? %> </h1>
 <%= render 'articles'%>
 <br>
 <br>
 <% if logged_in? %>
 <h1> <%= link_to "CREATE NEW BLOG", new_article_path , data: { confirm: 'Are you sure?' }%> </h1>
+<%= link_to "Logout", logout_path, data: { confirm: 'Are you sure?' }%> 
 <%else%>
 <h4> PLease <%= link_to "login" , login_path%> to create a article </h4>
 <% end %>
+<%= link_to 'HOME' , root_path%>
 <%= will_paginate @articles %>
 </div>

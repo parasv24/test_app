@@ -35,7 +35,11 @@ class UsersController < ApplicationController
     end
     def destroy
         @user = User.find(params[:id])
+        @user.articles.each do |article|
+            article.destroy
+        end
         respond_to do |format|
+            session[:user_id] = nil if @user == current_user
             @user.destroy
             format.html { redirect_to users_url, notice: "Article was successfully updated." }
         end
